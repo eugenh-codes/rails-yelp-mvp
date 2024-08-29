@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+.bg:hover {
+  color: black;
+  font-weight: bold;
+}

@@ -1,0 +1,21 @@
+<div class="container">
+  <%= link_to restaurants_path, :class => "btn btn-dark rounded" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <div class="container m-3 p-2">
+    <h1>Restaurants</h1>
+    <div class="container">
+        <% @restaurants.each do |restaurant| %>
+          <p class="bg text-decoration-none text-muted">
+            <i class="fa-solid fa-star"></i>
+            <%= restaurant.name %>
+            <%= link_to restaurant_path(restaurant), :class => 'text-dark' do %>
+              <i class="fa-solid fa-eye"></i>
+            <% end %>
+          </p>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  <hr>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="d-flex m-3 p-2">
+      <div class="flex-grow-1">
+        <h1>Restaurants</h1>
+      </div>
+      <div class="m-1">
+        <%= link_to top_restaurants_path, :class => "btn btn-dark" do %>
+          <i class="fa-solid fa-star"></i> Top
+        <% end %>
+      </div>
+      <div class="m-1">
+        <%= link_to new_restaurant_path, :class => "btn btn-dark" do %>
+          <i class="fa-solid fa-plus"></i> Add
+        <% end %>
+      </div>
+  </div>
+  <div class="container">
+    <ul class="list-inline">
+      <% @restaurants.each do |restaurant| %>
+        <li class="m-1 p-1">
+          <%= link_to restaurant_path(restaurant), :class => "bg text-decoration-none text-muted" do %>
+            <i class="fa-solid fa-utensils"></i>&nbsp; <%= restaurant.name %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <hr>
+</div>

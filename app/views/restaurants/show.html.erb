@@ -1,0 +1,61 @@
+<div class="container">
+  <%= link_to restaurants_path, :class => "btn btn-dark rounded" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <div class="container bg-light m-2 p-2">
+    <h1> <%= @restaurant.name %></h1>
+    <p>
+      <i class="fa-solid fa-utensils"></i>&nbsp;
+      <%= @restaurant.category.capitalize %>
+    </p>
+    <p>
+      <i class="fa-solid fa-location-dot"></i>&nbsp;
+      <%= @restaurant.address %>
+    </p>
+    <p>
+      <i class="fa-solid fa-phone"></i>&nbsp;
+      <%= @restaurant.phone_number %>
+    </p>
+  </div>
+  <hr>
+  <div>
+  <div class="container">
+    <div class="d-flex">
+      <div class="flex-grow-1">
+        <h2>Reviews</h2>
+      </div>
+      <div class="">
+        <a href="#new_review" class="btn btn-dark">
+          <i class="fa-solid fa-plus"></i> Add review
+        </a>
+      </div>
+    </div>
+    <div class="container" id="reviews">
+      <% @restaurant.reviews.each do |review|%>
+        <div class="bg-light p-3 m-2">
+          <p>
+            <% review.rating.times do %>
+              <i class="fa-solid fa-star"></i>
+            <% end %>
+            <% (5 - review.rating).times do %>
+              <i class="fa-regular fa-star"></i>
+            <% end %>
+          </p>
+          <p>
+            <%= review.content %>
+          </p>
+        </div>
+      <% end %>
+    </div>
+    <hr>
+    <div class="container" id="new_review">
+      <h1>New Review</h1>
+      <%= simple_form_for [@restaurant, @review] do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :content %>
+        <%= f.input :rating, as: :integer, input_html: { value: 0, min: 0, max: 5 } %>
+      <%= f.submit class: 'btn btn-dark' %>
+      <% end %>
+      </div>
+    </div>
+</div>

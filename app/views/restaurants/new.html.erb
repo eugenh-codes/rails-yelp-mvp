@@ -1,0 +1,17 @@
+<div class="container">
+  <%= link_to restaurants_path, :class => "btn btn-dark rounded" do %>
+    <i class="fa-solid fa-arrow-left"></i>
+  <% end %>
+  <div class="container bg-light m-2 p-2">
+    <h1>New Restaurant</h1>
+      <%= simple_form_for [@restaurant] do |f| %>
+        <%= f.error_notification %>
+        <%= f.input :name %>
+        <%= f.input :address %>
+        <%= f.input :phone_number, as: :tel %>
+        <%= f.input :category, collection: %w[chinese italian japanese french belgian], prompt: 'Choose a category' %>
+        <%= f.button :submit, class: 'btn btn-dark' %>
+      <% end %>
+    <!--%= render partial: 'form', locals: { restaurant: @restaurant } %-->
+  </div>
+</div>
